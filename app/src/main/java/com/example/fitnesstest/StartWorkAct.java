@@ -47,22 +47,22 @@ public class StartWorkAct extends AppCompatActivity {
         timerValue = (TextView) findViewById(R.id.timerValue);
         btnexercise = (TextView) findViewById(R.id.btnexercise);
 
-        divpage = (View) findViewById(R.id.divpage);
+       // divpage = (View) findViewById(R.id.divpage);
         bgprogress = (View) findViewById(R.id.bgprogress);
 
         fitone = (LinearLayout) findViewById(R.id.fitone);
 
-        imgTimer = (ImageView) findViewById(R.id.imgtimer);
+       // imgTimer = (ImageView) findViewById(R.id.imgtimer);
 
         //assign animation
-        btnexercise.startAnimation(bttfour);
+       /* btnexercise.startAnimation(bttfour);
         bgprogress.startAnimation(btthree);
         fitone.startAnimation(ttbone);
         intropage.startAnimation(ttbtwo);
         subintropage.startAnimation(ttbtwo);
         divpage.startAnimation(ttbtwo);
         timerValue.startAnimation(alphago);
-        imgTimer.startAnimation(alphago);
+        imgTimer.startAnimation(alphago);*/
 
         startTimer();
     }

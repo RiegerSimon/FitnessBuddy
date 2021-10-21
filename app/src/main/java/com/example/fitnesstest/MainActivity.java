@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
         bgprogress = (View) findViewById(R.id.bgprogress);
         bgprogresstop = (View) findViewById(R.id.bgprogresstop);
 
-        imgpage.startAnimation(animimgpage);
+       /* imgpage.startAnimation(animimgpage);
         titlepage.startAnimation(bttone);
         subtitlepage.startAnimation(bttone);
 
         btnexercise.startAnimation(btthree);
         bgprogress.startAnimation(bttwo);
-        bgprogresstop.startAnimation(lefttoright);
+        bgprogresstop.startAnimation(lefttoright);*/
 
         //give an event to another page
         btnexercise.setOnClickListener(new View.OnClickListener(){

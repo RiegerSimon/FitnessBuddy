@@ -64,10 +64,10 @@ public class WorkoutAct extends AppCompatActivity {
         fitthree = (LinearLayout) findViewById(R.id.fitthree);
         fitfour = (LinearLayout) findViewById(R.id.fitfour);
 
-        divpage = (View) findViewById(R.id.divpage);
+        //divpage = (View) findViewById(R.id.divpage);
         bgprogress = (View) findViewById(R.id.bgprogress);
 
-        //assign the animation
+       /* //assign the animation
         titlepage.startAnimation(bttone);
         subtitlepage.startAnimation(bttone);
         divpage.startAnimation(bttone);
@@ -81,6 +81,6 @@ public class WorkoutAct extends AppCompatActivity {
         fitfour.startAnimation(bttsix);
 
         btnexercise.startAnimation(btteight);
-        bgprogress.startAnimation(bttseven);
+        bgprogress.startAnimation(bttseven);*/
     }
 }
