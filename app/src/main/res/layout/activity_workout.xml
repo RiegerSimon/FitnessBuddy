@@ -13,13 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="266dp"
+        android:layout_marginRight="266dp"
+        android:layout_marginBottom="6dp"
         android:lineSpacingExtra="8dp"
         android:text="Exercises"
         android:textColor="#000"
         android:textSize="24sp"
         app:fontFamily="@font/audiowide"
+        app:layout_constraintBottom_toTopOf="@+id/subintropage"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="37dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/subintropage"
@@ -37,26 +43,26 @@
 
     <LinearLayout
         android:id="@+id/fitone"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subintropage">
 
         <ImageView
-            android:src="@drawable/chest"
             android:layout_width="110dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+            android:src="@drawable/chest" />
 
         <LinearLayout
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical">
 
             <TextView
@@ -75,8 +81,7 @@
                 android:layout_marginTop="5dp"
                 android:text="3 To 13 Minutes"
                 android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -84,26 +89,26 @@
 
     <LinearLayout
         android:id="@+id/fittwo"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fitone">
 
         <ImageView
-            android:src="@drawable/bicep"
             android:layout_width="110dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+            android:src="@drawable/bicep" />
 
         <LinearLayout
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical">
 
             <TextView
@@ -119,11 +124,10 @@
                 android:id="@+id/fittwodesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4 To 14 Minutes"
                 android:layout_marginTop="5dp"
+                android:text="4 To 14 Minutes"
                 android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -131,26 +135,26 @@
 
     <LinearLayout
         android:id="@+id/fitthree"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fittwo">
 
         <ImageView
-            android:src="@drawable/shoulder"
             android:layout_width="110dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+            android:src="@drawable/shoulder" />
 
         <LinearLayout
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical">
 
             <TextView
@@ -166,11 +170,10 @@
                 android:id="@+id/fitthreedesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5 To 15 Minutes"
                 android:layout_marginTop="5dp"
+                android:text="5 To 15 Minutes"
                 android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                 />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -178,26 +181,26 @@
 
     <LinearLayout
         android:id="@+id/fitfour"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fitthree">
 
         <ImageView
-            android:src="@drawable/leg"
             android:layout_width="110dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+            android:src="@drawable/leg" />
 
         <LinearLayout
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical">
 
             <TextView
@@ -213,11 +216,10 @@
                 android:id="@+id/fitfourdesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10 To 25 Minutes"
                 android:layout_marginTop="5dp"
+                android:text="10 To 25 Minutes"
                 android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -225,22 +227,21 @@
 
     <View
         android:id="@+id/bgprogress"
-        android:background="@color/Black"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="0dp"
+        android:background="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/btnexercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
         android:gravity="center"
         android:text="CONTINUE WORKOUT"
         android:textAlignment="center"
@@ -249,7 +250,6 @@
         app:fontFamily="@font/audiowide"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,14 +63,13 @@
 
     <View
         android:id="@+id/bgprogresstop"
+        android:layout_width="425dp"
+        android:layout_height="51dp"
         android:background="#000"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginStart="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="0dp" />
+        app:layout_constraintEnd_toStartOf="@+id/bgprogress"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/btnexercise"
