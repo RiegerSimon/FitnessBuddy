@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartWorkAct"></activity>
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="true" />
+        <activity android:name=".StartWorkAct" />
+
+        <receiver android:name=".AlarmReceiver" />
+
         <activity android:name=".WorkoutAct" />
         <activity android:name=".MainActivity">
             <intent-filter>
