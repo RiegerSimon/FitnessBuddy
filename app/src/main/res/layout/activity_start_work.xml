@@ -70,15 +70,16 @@
 
     <TextView
         android:id="@+id/subintropage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="6dp"
+        android:layout_width="385dp"
+        android:layout_height="176dp"
+        android:layout_marginTop="12dp"
         android:lineSpacingExtra="5dp"
-        android:text="You can add here whatever related  \nto your exercises."
+        android:text="1. Barbell Bench Press\n Grasp the bar just outside shoulder-width and arch your back so there’s space between your lower back and the bench. Pull the bar out of the rack and lower it to your sternum, tucking your elbows about 45° to your sides. When the bar touches your body, drive your feet hard into the floor and press the bar back up."
         android:textColor="#3A3A3A"
         android:textSize="16sp"
         app:fontFamily="sans-serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intropage" />
 
@@ -86,41 +87,41 @@
         android:id="@+id/divpage"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="26dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="26dp"
         android:background="#25293E"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subintropage"
-        />
+        app:layout_constraintTop_toBottomOf="@id/subintropage" />
 
     <TextView
         android:id="@+id/timerValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="8dp"
         android:text="00:00"
         android:textColor="@color/Black"
         android:textSize="68sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divpage"/>
+        app:layout_constraintTop_toBottomOf="@id/divpage" />
 
     <ImageView
         android:id="@+id/imgtimer"
         android:layout_width="320dp"
         android:layout_height="320dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
         android:src="@drawable/clock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divpage"/>
+        tools:layout_editor_absoluteY="347dp" />
 
     <View
         android:id="@+id/bgprogress"
