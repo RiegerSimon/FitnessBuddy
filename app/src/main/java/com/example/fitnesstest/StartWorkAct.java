@@ -35,6 +35,8 @@ public class StartWorkAct extends AppCompatActivity {
     private int page=2;
     private boolean atBottom=true;
     private boolean atTop=false;
+    private int lastdown=0;
+    private int lastup=0;
 
     Animation btthree, bttfour, ttbone, ttbtwo, alphago;
 
@@ -88,24 +90,29 @@ public class StartWorkAct extends AppCompatActivity {
                 toast.show();
 
             }
-            if (page<=2){
+            if (page+lastdown<=2){
                 fitoneImage.setImageResource(R.drawable.inclinedumbbell);
                 subintropage.setText("2. Incline Dumbbell Flye\nSet an adjustable bench to a 30°-45° angle, and lie back on it with a dumbbell in each hand. Turn your wrists so your palms face each other. Press the weights straight over your chest, then, keeping a slight bend in your elbows, spread your arms open as if you were going for a big bear hug.");
                 page=3;
                 atTop=false;
                 atBottom=false;
-            }else if (page==3){
+                lastdown=0;
+                lastup=1;
+            }else if (page+lastdown==3){
                 fitoneImage.setImageResource(R.drawable.cablecrossover);
                 subintropage.setText("3. Cable Crossover\nStand between two facing cable stations with both pulleys set midway between the top and bottom of the station. Attach a D-handle to each pulley and hold one in each hand. Keep your elbows slightly bent, and step forward so there’s tension on the cables.");
-                page++;
+                page=4;
                 atTop=false;
                 atBottom=false;
+                lastdown=0;
+                lastup=1;
             }
-            else if (page==4){
+            else if (page+lastdown>=4){
                 fitoneImage.setImageResource(R.drawable.landmine_press);
                 subintropage.setText("4. Landmine Press\nWedge the end of the barbell into a corner of the room (to avoid damage to the walls, you may have to wrap a towel around it). Load the opposite end with weight and grasp it toward the end of the barbell sleeve with your right hand. Stagger your stance so your left leg is in front. Press the bar straight overhead.");
                 atTop=true;
                 atBottom=false;
+                page=5;
             }
 
 
@@ -191,20 +198,27 @@ public class StartWorkAct extends AppCompatActivity {
             subintropage.setText("1. Barbell Bench Press\n Grasp the bar just outside shoulder-width and arch your back so there’s space between your lower back and the bench. Pull the bar out of the rack and lower it to your sternum, tucking your elbows about 45° to your sides. When the bar touches your body, drive your feet hard into the floor and press the bar back up.");
             atBottom=true;
             atTop=false;
+            page=1;
 
-        } else if (page-1==2){
+
+        } else if (page-1-lastup==2){
             fitoneImage.setImageResource(R.drawable.inclinedumbbell);
             subintropage.setText("2. Incline Dumbbell Flye\nSet an adjustable bench to a 30°-45° angle, and lie back on it with a dumbbell in each hand. Turn your wrists so your palms face each other. Press the weights straight over your chest, then, keeping a slight bend in your elbows, spread your arms open as if you were going for a big bear hug.");
             atBottom=false;
             atTop=false;
-            page--;
+            page=2;
+            lastdown=1;
+            lastup=0;
 
-        }else if (page-1>=3){
+
+        }else if (page-1-lastup>=3){
             fitoneImage.setImageResource(R.drawable.cablecrossover);
             subintropage.setText("3. Cable Crossover\nStand between two facing cable stations with both pulleys set midway between the top and bottom of the station. Attach a D-handle to each pulley and hold one in each hand. Keep your elbows slightly bent, and step forward so there’s tension on the cables.");
             page=3;
             atBottom=false;
             atTop=false;
+            lastdown=1;
+            lastup=0;
         }
 
 
