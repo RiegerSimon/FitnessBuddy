@@ -17,12 +17,14 @@
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat">
 
         <ImageView
-            android:src="@drawable/chest"
+            android:id="@+id/fitoneImage"
             android:layout_width="110dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+            android:src="@drawable/chest" />
 
         <LinearLayout
             android:layout_marginLeft="12dp"
@@ -113,15 +115,16 @@
 
     <ImageView
         android:id="@+id/imgtimer"
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="320dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/clock"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="347dp" />
+        app:layout_constraintTop_toBottomOf="@+id/subintropage" />
 
     <View
         android:id="@+id/bgprogress"
@@ -138,18 +141,42 @@
         android:id="@+id/btnexercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
         android:gravity="center"
-        android:text="CONTINUE WORKOUT"
+        android:text="Go to Next WORKOUT"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:fontFamily="@font/audiowide"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/continue_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="Startbreak"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.367"
+        app:layout_constraintStart_toEndOf="@+id/back_Button"
+        app:layout_constraintTop_toBottomOf="@+id/timerValue" />
+
+    <Button
+        android:id="@+id/back_Button"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="208dp"
+        android:background="@drawable/roundedbutton"
+        android:foreground="@drawable/ic_channel_foreground"
+        android:onClick="backToPreviousWorkout"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="@+id/imgtimer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
