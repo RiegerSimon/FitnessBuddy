@@ -193,7 +193,7 @@ public class StartWorkAct extends AppCompatActivity {
             Toast toast = Toast.makeText(this, "Du bist bei der ersten Übung", Toast.LENGTH_LONG);
             toast.show();
         }
-        if (page-1==1){
+        if (page-1-lastup<=1){
             fitoneImage.setImageResource(R.drawable.chest);
             subintropage.setText("1. Barbell Bench Press\n Grasp the bar just outside shoulder-width and arch your back so there’s space between your lower back and the bench. Pull the bar out of the rack and lower it to your sternum, tucking your elbows about 45° to your sides. When the bar touches your body, drive your feet hard into the floor and press the bar back up.");
             atBottom=true;
