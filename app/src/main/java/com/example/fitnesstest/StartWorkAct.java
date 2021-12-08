@@ -37,6 +37,8 @@ public class StartWorkAct extends AppCompatActivity {
     private boolean atTop=false;
     private int lastdown=0;
     private int lastup=0;
+    private int durchlauf=1;
+    private boolean timerStarted=false;
 
     Animation btthree, bttfour, ttbone, ttbtwo, alphago;
 
@@ -46,8 +48,8 @@ public class StartWorkAct extends AppCompatActivity {
         setContentView(R.layout.activity_start_work);
 
         continueButton=findViewById(R.id.continue_Button);
-        continueButton.setText("Do Workout");
-        continueButton.setEnabled(false);
+        continueButton.setText("Start Durchlauf: "+durchlauf);
+        continueButton.setEnabled(true);
 
         fitoneImage=findViewById(R.id.fitoneImage);
 
@@ -82,15 +84,29 @@ public class StartWorkAct extends AppCompatActivity {
         timerValue.startAnimation(alphago);
         imgTimer.startAnimation(alphago);
 
-        startTimer();
+
 
         btnexercise.setOnClickListener(v -> {
             if(atTop){
-                Toast toast = Toast.makeText(this, "Workout Finished", Toast.LENGTH_LONG);
-                toast.show();
+                //Toast toast = Toast.makeText(this, "Workout Finished", Toast.LENGTH_LONG);
+                //toast.show();
+                fitoneImage.setImageResource(R.drawable.chest);
+                subintropage.setText("1. Barbell Bench Press\n Grasp the bar just outside shoulder-width and arch your back so there’s space between your lower back and the bench. Pull the bar out of the rack and lower it to your sternum, tucking your elbows about 45° to your sides. When the bar touches your body, drive your feet hard into the floor and press the bar back up.");
+                atBottom=true;
+                atTop=false;
+                page=1;
+                continueButton.setText("Nächster Durchlauf: "+durchlauf);
+                continueButton.setEnabled(true);
+
+                countDownTimer.cancel();
+                timerValue.setText("00:00");
+                mTimeLeftInMillis = START_TIME_IN_MILLIS;
+                breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
+                stateBreakButton=true;
+
 
             }
-            if (page+lastdown<=2){
+            else if (page+lastdown<=2){
                 fitoneImage.setImageResource(R.drawable.inclinedumbbell);
                 subintropage.setText("2. Incline Dumbbell Flye\nSet an adjustable bench to a 30°-45° angle, and lie back on it with a dumbbell in each hand. Turn your wrists so your palms face each other. Press the weights straight over your chest, then, keeping a slight bend in your elbows, spread your arms open as if you were going for a big bear hug.");
                 page=3;
@@ -98,6 +114,8 @@ public class StartWorkAct extends AppCompatActivity {
                 atBottom=false;
                 lastdown=0;
                 lastup=1;
+                startNewWorkout();
+
             }else if (page+lastdown==3){
                 fitoneImage.setImageResource(R.drawable.cablecrossover);
                 subintropage.setText("3. Cable Crossover\nStand between two facing cable stations with both pulleys set midway between the top and bottom of the station. Attach a D-handle to each pulley and hold one in each hand. Keep your elbows slightly bent, and step forward so there’s tension on the cables.");
@@ -106,6 +124,8 @@ public class StartWorkAct extends AppCompatActivity {
                 atBottom=false;
                 lastdown=0;
                 lastup=1;
+
+                startNewWorkout();
             }
             else if (page+lastdown>=4){
                 fitoneImage.setImageResource(R.drawable.landmine_press);
@@ -113,23 +133,15 @@ public class StartWorkAct extends AppCompatActivity {
                 atTop=true;
                 atBottom=false;
                 page=5;
+                startNewWorkout();
             }
 
 
-
-            continueButton.setText("Do Workout");
-            continueButton.setEnabled(false);
-
-            countDownTimer.cancel();
-            mTimeLeftInMillis = START_TIME_IN_MILLIS;
-            breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
-            stateBreakButton=false;
-            startTimer();
         });
 
     }
-    public void Startbreak(View view) {
-        if (!stateBreakButton) {
+    public void startDurchlauf_onClick(View view) {
+        /*if (!stateBreakButton) {
             startTimerBreak();
             continueButton.setText("Break");
             continueButton.setEnabled(false);
@@ -139,9 +151,15 @@ public class StartWorkAct extends AppCompatActivity {
             startTimer();
             continueButton.setEnabled(false);
             stateBreakButton=false;
-        }
+        }*/
+        durchlauf++;
+        startTimer();
+        continueButton.setEnabled(false);
+        continueButton.setText("Do Workout");
+
     }
     private void startTimer(){
+        timerStarted=true;
         countDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -153,8 +171,9 @@ public class StartWorkAct extends AppCompatActivity {
             public void onFinish() {
                 mTimeLeftInMillis = START_TIME_IN_MILLIS;
                 breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
-                continueButton.setText("Start Break");
-                continueButton.setEnabled(true);
+                continueButton.setText("Break");
+                continueButton.setEnabled(false);
+                startTimerBreak();
             }
         }.start();
         mTimerRunning = true;
@@ -169,8 +188,7 @@ public class StartWorkAct extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                continueButton.setText("Start next SET");
-                continueButton.setEnabled(true);
+                btnexercise.performClick();
                 mTimeLeftInMillis = START_TIME_IN_MILLIS;
                 breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
 
@@ -226,6 +244,18 @@ public class StartWorkAct extends AppCompatActivity {
         continueButton.setEnabled(false);
 
         countDownTimer.cancel();
+        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+        breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
+        stateBreakButton=false;
+        startTimer();
+    }
+    public void startNewWorkout(){
+        continueButton.setText("Do Workout");
+        continueButton.setEnabled(false);
+
+        if (timerStarted) {
+            countDownTimer.cancel();
+        }
         mTimeLeftInMillis = START_TIME_IN_MILLIS;
         breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
         stateBreakButton=false;
