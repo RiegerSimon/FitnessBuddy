@@ -3,7 +3,6 @@ package com.example.fitnesstest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -160,7 +159,6 @@ public class StartWorkAct extends AppCompatActivity {
 
     }
     private void startTimer(){
-
         timerStarted=true;
         countDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
@@ -171,7 +169,6 @@ public class StartWorkAct extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-               // mediaPlayer.start();
                 mTimeLeftInMillis = START_TIME_IN_MILLIS;
                 breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
                 continueButton.setText("Break");
