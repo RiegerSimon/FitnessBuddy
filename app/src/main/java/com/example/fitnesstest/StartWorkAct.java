@@ -3,6 +3,7 @@ package com.example.fitnesstest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -40,12 +41,21 @@ public class StartWorkAct extends AppCompatActivity {
     private int durchlauf=1;
     private boolean timerStarted=false;
 
+
     Animation btthree, bttfour, ttbone, ttbtwo, alphago;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_work);
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.clickeffect);
+        boolean soundOn=true;
+
+        Bundle extras=getIntent().getExtras();
+        if (extras != null)
+        {
+            soundOn=extras.getBoolean("soundOn");
+        }
 
         continueButton=findViewById(R.id.continue_Button);
         continueButton.setText("Start Durchlauf: "+durchlauf);
@@ -85,7 +95,7 @@ public class StartWorkAct extends AppCompatActivity {
         imgTimer.startAnimation(alphago);
 
 
-
+        boolean finalSoundOn = soundOn;
         btnexercise.setOnClickListener(v -> {
             if(atTop){
                 //Toast toast = Toast.makeText(this, "Workout Finished", Toast.LENGTH_LONG);
@@ -114,7 +124,14 @@ public class StartWorkAct extends AppCompatActivity {
                 atBottom=false;
                 lastdown=0;
                 lastup=1;
+
+                if(finalSoundOn ==true) {
+                    mediaPlayer.start();
+                }
+
                 startNewWorkout();
+
+
 
             }else if (page+lastdown==3){
                 fitoneImage.setImageResource(R.drawable.cablecrossover);
@@ -124,7 +141,9 @@ public class StartWorkAct extends AppCompatActivity {
                 atBottom=false;
                 lastdown=0;
                 lastup=1;
-
+                if(finalSoundOn ==true) {
+                    mediaPlayer.start();
+                }
                 startNewWorkout();
             }
             else if (page+lastdown>=4){
@@ -133,6 +152,9 @@ public class StartWorkAct extends AppCompatActivity {
                 atTop=true;
                 atBottom=false;
                 page=5;
+                if(finalSoundOn ==true) {
+                    mediaPlayer.start();
+                }
                 startNewWorkout();
             }
 
@@ -159,6 +181,9 @@ public class StartWorkAct extends AppCompatActivity {
 
     }
     private void startTimer(){
+
+
+
         timerStarted=true;
         countDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
@@ -173,12 +198,17 @@ public class StartWorkAct extends AppCompatActivity {
                 breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
                 continueButton.setText("Break");
                 continueButton.setEnabled(false);
+
+
+
                 startTimerBreak();
             }
         }.start();
         mTimerRunning = true;
     }
     private void startTimerBreak(){
+
+
         countDownTimer = new CountDownTimer(breakTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

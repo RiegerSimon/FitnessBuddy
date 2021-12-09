@@ -1,14 +1,16 @@
 package com.example.fitnesstest;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class WorkoutAct extends AppCompatActivity {
 
@@ -25,21 +27,30 @@ public class WorkoutAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.clickeffect);
+        Boolean soundOn=true;
+
+        Bundle extras=getIntent().getExtras();
+        if (extras != null)
+        {
+            soundOn=extras.getBoolean("soundOn");
+        }
 
         //Load Animation
-        bttone = AnimationUtils.loadAnimation(this,R.anim.bttone);
-        bttwo = AnimationUtils.loadAnimation(this,R.anim.bttwo);
-        bttfour = AnimationUtils.loadAnimation(this,R.anim.bttfour);
-        bttfive = AnimationUtils.loadAnimation(this,R.anim.bttfive);
-        bttsix = AnimationUtils.loadAnimation(this,R.anim.bttsix);
-        bttseven = AnimationUtils.loadAnimation(this,R.anim.bttseven);
-        btteight = AnimationUtils.loadAnimation(this,R.anim.btteight);
+        bttone = AnimationUtils.loadAnimation(this, R.anim.bttone);
+        bttwo = AnimationUtils.loadAnimation(this, R.anim.bttwo);
+        bttfour = AnimationUtils.loadAnimation(this, R.anim.bttfour);
+        bttfive = AnimationUtils.loadAnimation(this, R.anim.bttfive);
+        bttsix = AnimationUtils.loadAnimation(this, R.anim.bttsix);
+        bttseven = AnimationUtils.loadAnimation(this, R.anim.bttseven);
+        btteight = AnimationUtils.loadAnimation(this, R.anim.btteight);
 
         titlepage = (TextView) findViewById(R.id.titlepage);
         subtitlepage = (TextView) findViewById(R.id.subtitlepage);
         intropage = (TextView) findViewById(R.id.intropage);
         subintropage = (TextView) findViewById(R.id.subintropage);
         btnexercise = (TextView) findViewById(R.id.btnexercise);
+        Button btnOptions = (Button) findViewById(R.id.options);
         fitonetitle = (TextView) findViewById(R.id.fitonetitle);
         fitonedesc = (TextView) findViewById(R.id.fitonedesc);
         fittwotitle = (TextView) findViewById(R.id.fittwotitle);
@@ -50,12 +61,32 @@ public class WorkoutAct extends AppCompatActivity {
         fitfourdesc = (TextView) findViewById(R.id.fitfourdesc);
 
         //give an event to another page
+        Boolean finalSoundOn1 = soundOn;
         btnexercise.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                if (finalSoundOn1 ==true)
+                    mediaPlayer.start();
+
                 Intent a = new Intent(WorkoutAct.this,StartWorkAct.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                a.putExtra("soundOn",finalSoundOn1);
                 startActivity(a);
+            }
+        });
+
+
+        Boolean finalSoundOn = soundOn;
+        btnOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (finalSoundOn ==true)
+                    mediaPlayer.start();
+
+                Intent b= new Intent(WorkoutAct.this,OptionsActivity.class );
+                b.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                b.putExtra("soundOn",finalSoundOn);
+                startActivity(b);
             }
         });
 
