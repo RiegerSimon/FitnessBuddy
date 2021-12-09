@@ -3,6 +3,7 @@ package com.example.fitnesstest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -29,7 +30,7 @@ public class StartWorkAct extends AppCompatActivity {
     private static final long START_TIME_IN_MILLIS = 40000;
     private static final long START_BREAK_TIME_IN_MILLIS = 20000;
     private CountDownTimer countDownTimer;
-    final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.clickeffect);
+    private MediaPlayer mediaPlayer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
     private long breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
@@ -48,13 +49,12 @@ public class StartWorkAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_work);
-
+        mediaPlayer = MediaPlayer.create(this,R.raw.clickeffect);
         continueButton=findViewById(R.id.continue_Button);
         continueButton.setText("Start Durchlauf: "+durchlauf);
         continueButton.setEnabled(true);
 
         fitoneImage=findViewById(R.id.fitoneImage);
-
         //Load Animations
         btthree = AnimationUtils.loadAnimation(this, R.anim.btthree);
         bttfour = AnimationUtils.loadAnimation(this, R.anim.bttfour);
@@ -182,7 +182,7 @@ public class StartWorkAct extends AppCompatActivity {
         mTimerRunning = true;
     }
     private void startTimerBreak(){
-        mediaPlayer.start();
+
         countDownTimer = new CountDownTimer(breakTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -195,7 +195,7 @@ public class StartWorkAct extends AppCompatActivity {
                 btnexercise.performClick();
                 mTimeLeftInMillis = START_TIME_IN_MILLIS;
                 breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
-
+                mediaPlayer.start();
             }
         }.start();
         mTimerRunning = true;
