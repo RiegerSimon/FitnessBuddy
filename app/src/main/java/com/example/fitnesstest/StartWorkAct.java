@@ -3,6 +3,7 @@ package com.example.fitnesstest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -28,6 +29,7 @@ public class StartWorkAct extends AppCompatActivity {
     private static final long START_TIME_IN_MILLIS = 40000;
     private static final long START_BREAK_TIME_IN_MILLIS = 20000;
     private CountDownTimer countDownTimer;
+    final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.clickeffect);
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
     private long breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
@@ -169,6 +171,7 @@ public class StartWorkAct extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                mediaPlayer.start();
                 mTimeLeftInMillis = START_TIME_IN_MILLIS;
                 breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
                 continueButton.setText("Break");
@@ -179,6 +182,7 @@ public class StartWorkAct extends AppCompatActivity {
         mTimerRunning = true;
     }
     private void startTimerBreak(){
+        mediaPlayer.start();
         countDownTimer = new CountDownTimer(breakTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
