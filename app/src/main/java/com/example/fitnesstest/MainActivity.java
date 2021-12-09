@@ -3,6 +3,7 @@ package com.example.fitnesstest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.clickeffect);
 
         animimgpage = AnimationUtils.loadAnimation(this, R.anim.animimgpage);
         bttone = AnimationUtils.loadAnimation(this, R.anim.bttone);
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         btnexercise.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                mediaPlayer.start();
                 Intent a = new Intent(MainActivity.this,WorkoutAct.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(a);
