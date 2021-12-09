@@ -181,10 +181,18 @@ public class StartWorkAct extends AppCompatActivity {
 
     }
     private void startTimer(){
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.clickeffect);
+        boolean soundOn=true;
 
+        Bundle extras=getIntent().getExtras();
+        if (extras != null)
+        {
+            soundOn=extras.getBoolean("soundOn");
+        }
 
 
         timerStarted=true;
+        boolean finalSoundOn = soundOn;
         countDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -199,7 +207,9 @@ public class StartWorkAct extends AppCompatActivity {
                 continueButton.setText("Break");
                 continueButton.setEnabled(false);
 
-
+                if(finalSoundOn ==true) {
+                    mediaPlayer.start();
+                }
 
                 startTimerBreak();
             }
