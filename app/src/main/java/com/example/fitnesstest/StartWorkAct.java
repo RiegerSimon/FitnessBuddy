@@ -128,6 +128,10 @@ public class StartWorkAct extends AppCompatActivity {
                 breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
                 stateBreakButton=true;
 
+                if(finalSoundOn ==true) {
+                    mediaPlayer.start();
+                }
+
 
             }
             else if (page+lastdown<=2){
