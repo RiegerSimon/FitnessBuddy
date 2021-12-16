@@ -35,10 +35,10 @@ public class StartWorkAct extends AppCompatActivity {
     private long breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
     private boolean stateBreakButton=false;
     private int page=2;
-    private boolean atBottom=true;
+    /*private boolean atBottom=true;
     private boolean atTop=false;
     private int lastdown=0;
-    private int lastup=0;
+    private int lastup=0;*/
     private int durchlauf=1;
     private int workout=0;
     private boolean timerStarted=false;
@@ -52,18 +52,20 @@ public class StartWorkAct extends AppCompatActivity {
         setContentView(R.layout.activity_start_work);
         final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.clickeffect);
         boolean soundOn=true;
-        int workoutTime = 50;
-        int breakTime=30;
+        int workoutTime = 40;
+        int breakTime=20;
 
         Bundle extras=getIntent().getExtras();
         if (extras != null)
         {
             soundOn=extras.getBoolean("soundOn");
+            if (extras.getInt("workoutTime")!=0)
             workoutTime=extras.getInt("workoutTime");
+            if (extras.getInt("breakTime")!=0)
             breakTime=extras.getInt("breakTime");
         }
 
-        Log.d("hallo",""+workoutTime);
+        Log.d("Worktime",""+workoutTime);
         Log.d("break", ""+breakTime);
 
         START_TIME_IN_MILLIS=(long) workoutTime*1000;
@@ -122,6 +124,9 @@ public class StartWorkAct extends AppCompatActivity {
         }
 
         boolean finalSoundOn = soundOn;
+        Log.d("Sound: ",""+finalSoundOn);
+
+
         btnexercise.setOnClickListener(v -> {
 
             if (workout==0) {

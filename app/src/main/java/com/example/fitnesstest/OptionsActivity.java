@@ -43,8 +43,8 @@ public class OptionsActivity extends AppCompatActivity implements TimePickerDial
         numberPicker.setValue(40);
 
         numberPicker2=(NumberPicker) findViewById(R.id.numberPicker2);
-        numberPicker2.setMinValue(20);
-        numberPicker2.setMaxValue(180);
+        numberPicker2.setMinValue(10);
+        numberPicker2.setMaxValue(120);
         numberPicker2.setValue(30);
 
         numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -117,7 +117,7 @@ public class OptionsActivity extends AppCompatActivity implements TimePickerDial
                     mediaPlayer.start();
                 }
 
-                Log.d("hallo",""+finalworkouttime);
+                Log.d("Worktime:",""+finalworkouttime);
 
                 Intent a = new Intent(OptionsActivity.this,WorkoutAct.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
