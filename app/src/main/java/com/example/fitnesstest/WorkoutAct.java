@@ -22,6 +22,7 @@ public class WorkoutAct extends AppCompatActivity {
     Animation bttone, bttwo, bttfour, bttfive, bttsix, bttseven, btteight;
 
     LinearLayout fitone, fittwo, fitthree, fitfour;
+    Button btnOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class WorkoutAct extends AppCompatActivity {
         //Load Animation
         bttone = AnimationUtils.loadAnimation(this, R.anim.bttone);
         bttwo = AnimationUtils.loadAnimation(this, R.anim.bttwo);
+
         bttfour = AnimationUtils.loadAnimation(this, R.anim.bttfour);
         bttfive = AnimationUtils.loadAnimation(this, R.anim.bttfive);
         bttsix = AnimationUtils.loadAnimation(this, R.anim.bttsix);
@@ -54,7 +56,7 @@ public class WorkoutAct extends AppCompatActivity {
         intropage = (TextView) findViewById(R.id.intropage);
         subintropage = (TextView) findViewById(R.id.subintropage);
         btnexercise = (TextView) findViewById(R.id.btnexercise);
-        Button btnOptions = (Button) findViewById(R.id.options);
+        btnOptions = (Button) findViewById(R.id.options);
         fitonetitle = (TextView) findViewById(R.id.fitonetitle);
         fitonedesc = (TextView) findViewById(R.id.fitonedesc);
         fittwotitle = (TextView) findViewById(R.id.fittwotitle);
@@ -114,6 +116,7 @@ public class WorkoutAct extends AppCompatActivity {
         titlepage.startAnimation(bttone);
         subtitlepage.startAnimation(bttone);
         divpage.startAnimation(bttone);
+        btnOptions.startAnimation(bttone);
 
         intropage.startAnimation(bttwo);
         subintropage.startAnimation(bttwo);

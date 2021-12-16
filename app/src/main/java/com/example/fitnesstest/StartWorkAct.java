@@ -40,6 +40,7 @@ public class StartWorkAct extends AppCompatActivity {
     private int lastdown=0;
     private int lastup=0;
     private int durchlauf=1;
+    private int workout=0;
     private boolean timerStarted=false;
 
 
@@ -107,77 +108,80 @@ public class StartWorkAct extends AppCompatActivity {
         divpage.startAnimation(ttbtwo);
         timerValue.startAnimation(alphago);
         imgTimer.startAnimation(alphago);
+        continueButton.startAnimation(alphago);
 
+
+        if (workout==0){
+            fitoneImage.setImageResource(R.drawable.chest);
+            subintropage.setText("1. Barbell Bench Press\n Grasp the bar just outside shoulder-width and arch your back so there’s space between your lower back and the bench. Pull the bar out of the rack and lower it to your sternum, tucking your elbows about 45° to your sides. When the bar touches your body, drive your feet hard into the floor and press the bar back up.");
+
+        }else if (workout==1){
+            fitonetitle.setText("Bicep Workout");
+
+
+        }
 
         boolean finalSoundOn = soundOn;
         btnexercise.setOnClickListener(v -> {
-            if(atTop){
-                //Toast toast = Toast.makeText(this, "Workout Finished", Toast.LENGTH_LONG);
-                //toast.show();
-                fitoneImage.setImageResource(R.drawable.chest);
-                subintropage.setText("1. Barbell Bench Press\n Grasp the bar just outside shoulder-width and arch your back so there’s space between your lower back and the bench. Pull the bar out of the rack and lower it to your sternum, tucking your elbows about 45° to your sides. When the bar touches your body, drive your feet hard into the floor and press the bar back up.");
-                atBottom=true;
-                atTop=false;
-                page=1;
-                continueButton.setText("NEXT ROUTINE: "+durchlauf);
-                continueButton.setEnabled(true);
 
-                countDownTimer.cancel();
-                timerValue.setText("00:00");
-                mTimeLeftInMillis = START_TIME_IN_MILLIS;
-                breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
-                stateBreakButton=true;
+            if (workout==0) {
 
-                if(finalSoundOn ==true) {
-                    mediaPlayer.start();
+                if (page==1) {
+                    //Toast toast = Toast.makeText(this, "Workout Finished", Toast.LENGTH_LONG);
+                    //toast.show();
+                    fitoneImage.setImageResource(R.drawable.chest);
+                    subintropage.setText("1. Barbell Bench Press\n Grasp the bar just outside shoulder-width and arch your back so there’s space between your lower back and the bench. Pull the bar out of the rack and lower it to your sternum, tucking your elbows about 45° to your sides. When the bar touches your body, drive your feet hard into the floor and press the bar back up.");
+                    page = 2;
+                    continueButton.setText("NEXT ROUTINE: " + durchlauf);
+                    continueButton.setEnabled(true);
+
+                    countDownTimer.cancel();
+                    timerValue.setText("00:00");
+                    mTimeLeftInMillis = START_TIME_IN_MILLIS;
+                    breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
+                    stateBreakButton = true;
+
+                    if (finalSoundOn == true) {
+                        mediaPlayer.start();
+                    }
+
+
+                } else if (page  == 2) {
+                    fitoneImage.setImageResource(R.drawable.inclinedumbbell);
+                    subintropage.setText("2. Incline Dumbbell Flye\nSet an adjustable bench to a 30°-45° angle, and lie back on it with a dumbbell in each hand. Turn your wrists so your palms face each other. Press the weights straight over your chest, then, keeping a slight bend in your elbows, spread your arms open as if you were going for a big bear hug.");
+                    page = 3;
+
+                    if (finalSoundOn == true) {
+                        mediaPlayer.start();
+                    }
+
+                    startNewWorkout();
+
+
+                } else if (page  == 3) {
+                    fitoneImage.setImageResource(R.drawable.cablecrossover);
+                    subintropage.setText("3. Cable Crossover\nStand between two facing cable stations with both pulleys set midway between the top and bottom of the station. Attach a D-handle to each pulley and hold one in each hand. Keep your elbows slightly bent, and step forward so there’s tension on the cables.");
+                    page = 4;
+
+                    if (finalSoundOn == true) {
+                        mediaPlayer.start();
+                    }
+                    startNewWorkout();
+                } else if (page == 4) {
+                    fitoneImage.setImageResource(R.drawable.landmine_press);
+                    subintropage.setText("4. Landmine Press\nWedge the end of the barbell into a corner of the room (to avoid damage to the walls, you may have to wrap a towel around it). Load the opposite end with weight and grasp it toward the end of the barbell sleeve with your right hand. Stagger your stance so your left leg is in front. Press the bar straight overhead.");
+                    page = 1;
+                    if (finalSoundOn == true) {
+                        mediaPlayer.start();
+                    }
+                    startNewWorkout();
                 }
-
-
+            }else if (workout==1){
+                // Do Other Workout
             }
-            else if (page+lastdown<=2){
-                fitoneImage.setImageResource(R.drawable.inclinedumbbell);
-                subintropage.setText("2. Incline Dumbbell Flye\nSet an adjustable bench to a 30°-45° angle, and lie back on it with a dumbbell in each hand. Turn your wrists so your palms face each other. Press the weights straight over your chest, then, keeping a slight bend in your elbows, spread your arms open as if you were going for a big bear hug.");
-                page=3;
-                atTop=false;
-                atBottom=false;
-                lastdown=0;
-                lastup=1;
-
-                if(finalSoundOn ==true) {
-                    mediaPlayer.start();
-                }
-
-                startNewWorkout();
-
-
-
-            }else if (page+lastdown==3){
-                fitoneImage.setImageResource(R.drawable.cablecrossover);
-                subintropage.setText("3. Cable Crossover\nStand between two facing cable stations with both pulleys set midway between the top and bottom of the station. Attach a D-handle to each pulley and hold one in each hand. Keep your elbows slightly bent, and step forward so there’s tension on the cables.");
-                page=4;
-                atTop=false;
-                atBottom=false;
-                lastdown=0;
-                lastup=1;
-                if(finalSoundOn ==true) {
-                    mediaPlayer.start();
-                }
-                startNewWorkout();
-            }
-            else if (page+lastdown>=4){
-                fitoneImage.setImageResource(R.drawable.landmine_press);
-                subintropage.setText("4. Landmine Press\nWedge the end of the barbell into a corner of the room (to avoid damage to the walls, you may have to wrap a towel around it). Load the opposite end with weight and grasp it toward the end of the barbell sleeve with your right hand. Stagger your stance so your left leg is in front. Press the bar straight overhead.");
-                atTop=true;
-                atBottom=false;
-                page=5;
-                if(finalSoundOn ==true) {
-                    mediaPlayer.start();
-                }
-                startNewWorkout();
-            }
-
 
         });
+
 
     }
 
@@ -267,6 +271,7 @@ public class StartWorkAct extends AppCompatActivity {
         timerValue.setText(timeLeft);
     }
 
+    /* Workout Back button
     public void backToPreviousWorkout(View view) {
 
         if (atBottom){
@@ -310,7 +315,7 @@ public class StartWorkAct extends AppCompatActivity {
         breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
         stateBreakButton=false;
         startTimer();
-    }
+    }*/
     public void startNewWorkout(){
         continueButton.setText("Do Workout");
         continueButton.setEnabled(false);
