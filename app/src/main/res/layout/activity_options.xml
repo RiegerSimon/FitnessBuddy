@@ -9,12 +9,68 @@
 
 
     <TextView
+        android:id="@+id/intropage9"
+        android:layout_width="194dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="8dp"
+        android:text="break time:"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:fontFamily="@font/audiowide"
+        app:layout_constraintStart_toEndOf="@+id/intropage8"
+        app:layout_constraintTop_toBottomOf="@+id/intropage7" />
+
+    <TextView
+        android:id="@+id/intropage8"
+        android:layout_width="194dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="8dp"
+        android:text="workout time:"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:fontFamily="@font/audiowide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intropage7" />
+
+    <TextView
+        android:id="@+id/intropage7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:lineSpacingExtra="8dp"
+        android:text="Timer"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:fontFamily="@font/audiowide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intropage4" />
+
+    <TextView
         android:id="@+id/intropage6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:lineSpacingExtra="8dp"
         android:text="Notification"
         android:textColor="#000"
@@ -29,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:lineSpacingExtra="8dp"
         android:text="Sounds"
         android:textColor="#000"
@@ -44,7 +100,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="42dp"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
         android:checked="true"
@@ -60,14 +116,14 @@
         android:layout_height="32dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="10dp"
         android:lineSpacingExtra="8dp"
         android:text="enable sounds:"
         android:textColor="#000"
         android:textSize="20sp"
         app:fontFamily="@font/audiowide"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/intropage5" />
 
     <TextView
         android:id="@+id/intropage3"
@@ -88,7 +144,7 @@
         android:id="@+id/titlepage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="600dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/candal"
         android:gravity="center"
         android:lineSpacingExtra="1dp"
@@ -98,30 +154,9 @@
         android:textSize="34sp"
         android:textStyle="bold|italic"
         app:fontFamily="@font/audiowide"
-        app:layout_constraintBottom_toBottomOf="@+id/btnexercise"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/subtitlepage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="560dp"
-        android:fontFamily="@font/candal"
-        android:gravity="center"
-        android:lineSpacingExtra="3dp"
-        android:text="Made by Grünbichler,  Rieger, Platzer "
-        android:textAlignment="center"
-        android:textColor="#3A3A3A"
-        android:textSize="12sp"
-        app:fontFamily="sans-serif"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlepage" />
 
     <View
         android:id="@+id/bgprogress"
@@ -135,11 +170,12 @@
 
     <View
         android:id="@+id/bgprogresstop"
-        android:layout_width="170dp"
+        android:layout_width="411dp"
         android:layout_height="50dp"
         android:background="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -150,7 +186,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
         android:gravity="center"
-        android:text="Save"
+        android:text="SAVE"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -165,17 +201,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="20dp"
         android:lineSpacingExtra="8dp"
         android:text="enable notification: "
         android:textColor="#000"
         android:textSize="20sp"
         app:fontFamily="@font/audiowide"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/intropage6" />
 
     <Button
         android:id="@+id/timePickerButton"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="92dp"
         android:layout_height="51dp"
         android:layout_marginStart="20dp"
@@ -195,14 +232,14 @@
         android:layout_height="48dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
         android:checked="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/intropage2"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intropage6"
         tools:checked="false" />
 
     <TextView
@@ -223,8 +260,32 @@
         android:layout_width="409dp"
         android:layout_height="1dp"
         android:layout_marginTop="45dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintTop_toBottomOf="@+id/intropage3"
-        tools:layout_editor_absoluteX="1dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intropage3" />
+
+
+    <NumberPicker
+        android:id="@+id/numberPicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intropage8"></NumberPicker>
+
+    <NumberPicker
+        android:id="@+id/numberPicker2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intropage9"></NumberPicker>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

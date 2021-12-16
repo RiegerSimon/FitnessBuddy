@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -26,8 +27,8 @@ public class StartWorkAct extends AppCompatActivity {
     Button continueButton;
     ImageView fitoneImage;
 
-    private static final long START_TIME_IN_MILLIS = 40000;
-    private static final long START_BREAK_TIME_IN_MILLIS = 20000;
+    private static long START_TIME_IN_MILLIS = 40000;
+    private static long START_BREAK_TIME_IN_MILLIS = 20000;
     private CountDownTimer countDownTimer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
@@ -50,15 +51,28 @@ public class StartWorkAct extends AppCompatActivity {
         setContentView(R.layout.activity_start_work);
         final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.clickeffect);
         boolean soundOn=true;
+        int workoutTime = 50;
+        int breakTime=30;
 
         Bundle extras=getIntent().getExtras();
         if (extras != null)
         {
             soundOn=extras.getBoolean("soundOn");
+            workoutTime=extras.getInt("workoutTime");
+            breakTime=extras.getInt("breakTime");
         }
 
+        Log.d("hallo",""+workoutTime);
+        Log.d("break", ""+breakTime);
+
+        START_TIME_IN_MILLIS=(long) workoutTime*1000;
+        START_BREAK_TIME_IN_MILLIS=(long) breakTime*1000;
+        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+        breakTimeLeftInMillis = START_BREAK_TIME_IN_MILLIS;
+
+
         continueButton=findViewById(R.id.continue_Button);
-        continueButton.setText("Start Durchlauf: "+durchlauf);
+        continueButton.setText("START ROUTINE: "+durchlauf);
         continueButton.setEnabled(true);
 
         fitoneImage=findViewById(R.id.fitoneImage);
@@ -105,7 +119,7 @@ public class StartWorkAct extends AppCompatActivity {
                 atBottom=true;
                 atTop=false;
                 page=1;
-                continueButton.setText("Nächster Durchlauf: "+durchlauf);
+                continueButton.setText("NEXT ROUTINE: "+durchlauf);
                 continueButton.setEnabled(true);
 
                 countDownTimer.cancel();
@@ -160,6 +174,10 @@ public class StartWorkAct extends AppCompatActivity {
 
 
         });
+
+    }
+
+    public void resetTime(){
 
     }
     public void startDurchlauf_onClick(View view) {
@@ -248,7 +266,7 @@ public class StartWorkAct extends AppCompatActivity {
     public void backToPreviousWorkout(View view) {
 
         if (atBottom){
-            Toast toast = Toast.makeText(this, "Du bist bei der ersten Übung", Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, "You are on your first excerise", Toast.LENGTH_LONG);
             toast.show();
         }
         if (page-1-lastup<=1){

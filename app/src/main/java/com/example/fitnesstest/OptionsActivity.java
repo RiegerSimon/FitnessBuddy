@@ -6,8 +6,10 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -17,6 +19,13 @@ import androidx.fragment.app.DialogFragment;
 import java.util.Calendar;
 
 public class OptionsActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+
+    private NumberPicker numberPicker;
+    private NumberPicker numberPicker2;
+    int workoutTime;
+    int breakTime;
+    StartWorkAct startWorkAct=new StartWorkAct();
+
 
     Calendar calendar=Calendar.getInstance();
     @Override
@@ -28,6 +37,29 @@ public class OptionsActivity extends AppCompatActivity implements TimePickerDial
         Switch toggleNoti=(Switch) findViewById(R.id.toggleNoti);
         Switch toggleSound=(Switch) findViewById(R.id.toggleSound);
 
+        numberPicker=(NumberPicker) findViewById(R.id.numberPicker1);
+        numberPicker.setMinValue(20);
+        numberPicker.setMaxValue(180);
+        numberPicker.setValue(40);
+
+        numberPicker2=(NumberPicker) findViewById(R.id.numberPicker2);
+        numberPicker2.setMinValue(20);
+        numberPicker2.setMaxValue(180);
+        numberPicker2.setValue(30);
+
+        numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                workoutTime=newVal;
+            }
+        });
+
+        numberPicker2.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                breakTime=newVal;
+            }
+        });
 
 
         //set start Notification time to current time
@@ -48,6 +80,9 @@ public class OptionsActivity extends AppCompatActivity implements TimePickerDial
         btnexercise.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                int finalworkouttime=workoutTime;
+                int finalbreaktime=breakTime;
+
                 boolean soundOn = true;
 
                 if (toggleSound.isChecked()==false)
@@ -82,9 +117,13 @@ public class OptionsActivity extends AppCompatActivity implements TimePickerDial
                     mediaPlayer.start();
                 }
 
+                Log.d("hallo",""+finalworkouttime);
+
                 Intent a = new Intent(OptionsActivity.this,WorkoutAct.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 a.putExtra("soundOn",soundOn);
+                a.putExtra("workoutTime",finalworkouttime);
+                a.putExtra("breakTime",finalbreaktime);
                 startActivity(a);
             }
         });

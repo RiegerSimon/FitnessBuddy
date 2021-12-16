@@ -29,11 +29,15 @@ public class WorkoutAct extends AppCompatActivity {
         setContentView(R.layout.activity_workout);
         final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.clickeffect);
         Boolean soundOn=true;
+        int workoutTime=40;
+        int breakTime=30;
 
         Bundle extras=getIntent().getExtras();
         if (extras != null)
         {
             soundOn=extras.getBoolean("soundOn");
+            workoutTime=extras.getInt("workoutTime");
+            breakTime=extras.getInt("breakTime");
         }
 
         //Load Animation
@@ -62,6 +66,8 @@ public class WorkoutAct extends AppCompatActivity {
 
         //give an event to another page
         Boolean finalSoundOn1 = soundOn;
+        int finalWorkoutTime1 = workoutTime;
+        int finalBreakTime1 = breakTime;
         btnexercise.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -71,12 +77,16 @@ public class WorkoutAct extends AppCompatActivity {
                 Intent a = new Intent(WorkoutAct.this,StartWorkAct.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 a.putExtra("soundOn",finalSoundOn1);
+                a.putExtra("workoutTime", finalWorkoutTime1);
+                a.putExtra("breakTime", finalBreakTime1);
                 startActivity(a);
             }
         });
 
 
         Boolean finalSoundOn = soundOn;
+        int finalWorkoutTime = workoutTime;
+        int finalBreakTime = breakTime;
         btnOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +96,8 @@ public class WorkoutAct extends AppCompatActivity {
                 Intent b= new Intent(WorkoutAct.this,OptionsActivity.class );
                 b.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 b.putExtra("soundOn",finalSoundOn);
+                b.putExtra("workoutTime", finalWorkoutTime);
+                b.putExtra("breakTime", finalBreakTime);
                 startActivity(b);
             }
         });
